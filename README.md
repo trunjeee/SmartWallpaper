@@ -26,7 +26,11 @@ SmartWallpaper is a lightweight Windows WPF app that allows you to set different
 
 Wallpapers are automatically combined into one stretched image, and Windows is instructed to use **"tile" mode** for accurate alignment.
 
-[![btn](https://github.com/user-attachments/assets/a7488eb8-2620-4046-b583-98955af15bfc)](https://github.com/trunjeee/SmartWallpaper/releases/download/v1.0/SmartWallpaper.exe)
+<div align="center">
+  <a href="https://github.com/trunjeee/SmartWallpaper/releases/download/v1.0/SmartWallpaper.exe">
+    <img src="https://github.com/user-attachments/assets/a7488eb8-2620-4046-b583-98955af15bfc" alt="Download Smart Wallpaper"/>
+  </a>
+</div>
 
 
 
