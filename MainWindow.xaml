@@ -1,0 +1,80 @@
+﻿<Window x:Class="SmartWallpaperWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Smart Wallpaper" 
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Window.Resources>
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#BCFF21"/>
+            <Setter Property="Foreground" Value="#171717"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#212121" CornerRadius="12" Padding="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                Background="#171717"
+                CornerRadius="12,12,0,0"
+                MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Viewbox Width="20" Height="14" Stretch="Uniform">
+                        <Canvas Height="14" Width="20">
+                            <Path Data="M0.140698 0C0.0634566 0 0 0.0653243 0 0.144796V6.7962C0 7.09427 0.0181218 7.3923 0.0532972 7.68816C0.485919 11.2924 3.4722 14 6.99808 14H8.75046L8.752 14H11.2473C11.3245 14 11.388 13.9347 11.388 13.8552V7.20395C11.388 6.96393 11.4072 6.72376 11.4457 6.48695C11.7825 4.39351 13.5497 2.85853 15.6098 2.85812H17.0942C17.1655 2.85812 17.2233 2.91762 17.2233 2.99103V6.79605C17.2233 7.03607 17.2041 7.27624 17.1657 7.51305C16.8288 9.6065 15.0616 11.1415 13.0015 11.1419H12.5479C12.4706 11.1419 12.4075 11.2071 12.4075 11.2867V13.855C12.4075 13.9347 12.4706 14 12.5479 14H13.0019C16.5278 14 19.5141 11.2924 19.9467 7.68816C19.9819 7.3923 20 7.09427 20 6.7962V0.144796C20 0.0653243 19.9365 0 19.8593 0H17.364L17.3625 8.74578e-06H15.6094C12.0835 8.74578e-06 9.09722 2.70761 8.6646 6.31184C8.62943 6.6077 8.61131 6.90573 8.61131 7.2038V11.009C8.61131 11.0824 8.5535 11.1419 8.48219 11.1419H6.99847C4.93835 11.1415 3.17123 9.6065 2.83435 7.51305C2.79591 7.27624 2.77666 7.03607 2.77666 6.79605V2.99117C2.77666 2.91776 2.83447 2.85826 2.90577 2.85826L7.45179 2.85826C7.529 2.85826 7.59246 2.79294 7.59246 2.71343V0.144892C7.59246 0.0653826 7.529 6.25868e-05 7.45179 6.25833e-05L2.64009 6.23668e-05L2.63596 0H0.140698Z"
+                  Fill="#D9D9D9"/>
+                        </Canvas>
+                    </Viewbox>
+                    <TextBlock Text="Smart Wallpaper" Foreground="#D9D9D9" FontSize="12" VerticalAlignment="Center" Margin="6,0,0,0"/>
+                </StackPanel>
+
+                <Button Content="✕" Width="32" Height="32" Margin="0,4,8,4"
+                    Click="CloseButton_Click"
+                    Style="{StaticResource NoGlowButton}"
+                    Cursor="Hand"
+                    HorizontalAlignment="Right"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Select wallpaper for each monitor" FontWeight="Medium" FontSize="16" Foreground="White"/>
+                    <ItemsControl x:Name="MonitorsPanel" />
+                    <Button Content="Apply wallpaper" Click="ApplyWallpaper_Click" Margin="0,20,0,0" Height="40" Style="{StaticResource RoundedButtonStyle}"/>
+                    <StackPanel x:Name="StatusPanel" Margin="0,0,0,0" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
