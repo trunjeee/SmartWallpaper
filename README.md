@@ -33,12 +33,17 @@ Wallpapers are automatically combined into one stretched image, and Windows is i
 </div>
 
 
-
 ## 🛠️ Manual build
 
 You can build the app using Visual Studio:
 
 ```bash
 Open SmartWallpaperWPF.sln
-Build → Run (F5)
+Build → Run (F5) 
+```
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/trunjeee/SmartWallpaper)
+![GitHub release downloads](https://img.shields.io/github/downloads/trunjeee/SmartWallpaper/total?label=Downloads)
+![GitHub](https://img.shields.io/github/license/trunjeee/SmartWallpaper)
+![GitHub repo size](https://img.shields.io/github/repo-size/trunjeee/SmartWallpaper)
+![GitHub last commit](https://img.shields.io/github/last-commit/trunjeee/SmartWallpaper)
