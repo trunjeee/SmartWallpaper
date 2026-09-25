@@ -1,46 +1,53 @@
 # SmartWallpaper
 
-SmartWallpaper is a lightweight Windows WPF app that allows you to set different wallpapers on each connected monitor — with support for individual scaling, DPI-aware placement, and a modern interface.
+SmartWallpaper is a native Windows 11 app (WinUI 3) that sets a different wallpaper on each monitor — with a visual monitor layout, per-monitor fit modes and protection against Windows resetting your wallpapers.
 
-![image](https://github.com/user-attachments/assets/128741ac-5d62-400e-a371-5ed15109ba53)
+![SmartWallpaper](docs/screenshot.png)
 
 ## ✨ Features
 
-- 🎯 Per-monitor wallpaper selection
-- 🧠 Auto layout with DPI-awareness
-- 🖼️ Live preview with resolution info
-- 🌙 Dark UI with smooth rounded controls
-- 🔧 No background services or heavy resource usage
+- 🖥️ Visual monitor layout — arranged exactly like in *Settings → Display*, with number, name, resolution and scale
+- 🖱️ Drag & drop an image onto a monitor, double-click it, or use *Select image…*
+- 🎯 Per-monitor fit mode: **Fill**, **Fit** (with black bars) or **Stretch** — the preview shows exactly what you get
+- 🔢 *Identify monitors* — shows a big number on every physical screen
+- 🧠 Native per-monitor wallpapers via Windows `IDesktopWallpaper` — no more stitching one giant image
+- 🎨 Each image is pre-rendered pixel-perfect for its monitor's resolution
+- 🛡️ Survives sudden power loss — see below
+
+## 🛡️ Wallpapers no longer reset
+
+Previously Windows could reset the wallpaper after a sudden shutdown. Now:
+
+1. Selected images and rendered wallpapers are stored in `%LOCALAPPDATA%\SmartWallpaper` instead of the temp folder.
+2. Registry changes are flushed to disk right after applying.
+3. **Restore wallpapers at sign-in** (on by default) — at logon the app silently re-applies your wallpapers (`SmartWallpaper.exe --restore`, no window) and re-renders them if a monitor's resolution changed.
 
 ## 📦 Requirements
 
-- Windows 10 or 11 (x64)
-- .NET Framework 4.8
-- Admin rights to change wallpapers (optional)
+- Windows 10 (1809+) or Windows 11, x64
+- Nothing else — .NET and Windows App SDK are bundled into the single `.exe`
 
 ## 🚀 How to use
 
-1. Launch the app.
-2. Select a wallpaper per monitor.
-3. Click `Apply wallpaper` — done!
-
-Wallpapers are automatically combined into one stretched image, and Windows is instructed to use **"tile" mode** for accurate alignment.
+1. Download and launch `SmartWallpaper.exe` — no installation needed.
+2. Pick an image for each monitor.
+3. Click **Apply** — done!
 
 <div align="center">
-  <a href="https://github.com/trunjeee/SmartWallpaper/releases/download/v1.0/SmartWallpaper.exe">
+  <a href="https://github.com/trunjeee/SmartWallpaper/releases/latest/download/SmartWallpaper.exe">
     <img src="https://github.com/user-attachments/assets/a7488eb8-2620-4046-b583-98955af15bfc" alt="Download Smart Wallpaper"/>
   </a>
 </div>
 
-
 ## 🛠️ Manual build
 
-You can build the app using Visual Studio:
+Requires .NET SDK 10.
 
 ```bash
-Open SmartWallpaperWPF.sln
-Build → Run (F5) 
+dotnet publish -c Release -o publish-single -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none
 ```
+
+Stack: WinUI 3 (Windows App SDK 1.8), .NET 10, CommunityToolkit.Mvvm.
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/trunjeee/SmartWallpaper)
 ![GitHub release downloads](https://img.shields.io/github/downloads/trunjeee/SmartWallpaper/total?label=Downloads)

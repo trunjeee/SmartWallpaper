@@ -1,0 +1,35 @@
+<Window
+    x:Class="SmartWallpaper.IdentifyWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Identify">
+
+    <Grid Background="#F2171717" RowSpacing="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="NumberText"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontFamily="{StaticResource AppFontSemiBold}"
+            FontSize="120"
+            Foreground="{StaticResource AccentLimeBrush}" />
+        <TextBlock
+            x:Name="NameText"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            FontFamily="{StaticResource AppFontSemiBold}"
+            FontSize="20"
+            Foreground="White" />
+        <TextBlock
+            x:Name="DetailsText"
+            Grid.Row="2"
+            Margin="0,0,0,24"
+            HorizontalAlignment="Center"
+            FontSize="13"
+            Foreground="#B3FFFFFF" />
+    </Grid>
+</Window>
